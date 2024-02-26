@@ -1,8 +1,8 @@
-const names = ["짱구", "맹구"];
+import classes from "./Post.module.css";
 
 const Post = (props) => {
   return (
-    <div style={{ width: "300px", backgroundColor: "skyblue" }}>
+    <div className={classes.post}>
       <h2>제목</h2>
       <p>작성자 : {props.author}</p>
       <p>내용 : {props.body}</p>
