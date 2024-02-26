@@ -1,13 +1,11 @@
 const names = ["짱구", "맹구"];
 
-const Post = () => {
-  const choseName = Math.random() > 0.5 ? names[0] : names[1];
-
+const Post = (props) => {
   return (
     <div>
       <h2>제목</h2>
-      <p>작성자 : {choseName}</p>
-      <p>내용</p>
+      <p>작성자 : {props.author}</p>
+      <p>내용 : {props.body}</p>
     </div>
   );
 };
