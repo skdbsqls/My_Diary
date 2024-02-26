@@ -6,14 +6,10 @@ import NewPost from "./NewPost";
 
 import classes from "./PostsList.module.css";
 
-const PostsList = () => {
-  const [isVisible, setIsVisible] = useState(true);
+const PostsList = ({ isPosting, onStopPosting }) => {
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
 
-  const hideModalHandler = () => {
-    setIsVisible(false);
-  };
   const bodyChangeHandler = (event) => {
     setBody(event.target.value);
   };
@@ -37,8 +33,8 @@ const PostsList = () => {
   return (
     <>
       {/* {modalContent} */}
-      {isVisible && (
-        <Modal onClose={hideModalHandler}>
+      {isPosting && (
+        <Modal onClose={onStopPosting}>
           <NewPost
             onBodyChange={bodyChangeHandler}
             onNameChange={nameChangeHandler}
@@ -47,7 +43,7 @@ const PostsList = () => {
       )}
       <ul className={classes.posts}>
         <Post author={name} body={body} />
-        <Post author="맹구" body="나는 맹구야" />
+        <Post author="emily" body="Hello React!" />
       </ul>
     </>
   );

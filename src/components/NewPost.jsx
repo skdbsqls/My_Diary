@@ -4,11 +4,11 @@ function NewPost(props) {
   return (
     <form className={classes.form}>
       <p>
-        <label htmlFor="name">작성자</label>
+        <label htmlFor="name">Your name</label>
         <input type="text" id="name" required onChange={props.onNameChange} />
       </p>
       <p>
-        <label htmlFor="body">내용</label>
+        <label htmlFor="body">Text</label>
         <textarea id="body" required rows={3} onChange={props.onBodyChange} />
       </p>
     </form>
