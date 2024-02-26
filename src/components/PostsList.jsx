@@ -7,44 +7,32 @@ import NewPost from "./NewPost";
 import classes from "./PostsList.module.css";
 
 const PostsList = ({ isPosting, onStopPosting }) => {
-  const [body, setBody] = useState("");
-  const [name, setName] = useState("");
+  const [posts, setPosts] = useState([]);
 
-  const bodyChangeHandler = (event) => {
-    setBody(event.target.value);
+  const addPostHandler = (PostData) => {
+    setPosts((existingPosts) => [PostData, ...existingPosts]);
   };
-  const nameChangeHandler = (event) => {
-    setName(event.target.value);
-  };
-
-  // let modalContent;
-
-  // if (isVisible) {
-  //   modalContent = (
-  //     <Modal onClose={hideModalHandler}>
-  //       <NewPost
-  //         onBodyChange={bodyChangeHandler}
-  //         onNameChange={nameChangeHandler}
-  //       />
-  //     </Modal>
-  //   );
-  // }
 
   return (
     <>
-      {/* {modalContent} */}
       {isPosting && (
         <Modal onClose={onStopPosting}>
-          <NewPost
-            onBodyChange={bodyChangeHandler}
-            onNameChange={nameChangeHandler}
-          />
+          <NewPost onCancel={onStopPosting} onAddPost={addPostHandler} />
         </Modal>
       )}
-      <ul className={classes.posts}>
-        <Post author={name} body={body} />
-        <Post author="emily" body="Hello React!" />
-      </ul>
+      {posts.length > 0 && (
+        <ul className={classes.posts}>
+          {posts.map((post) => (
+            <Post key={post.body} name={post.name} body={post.body} />
+          ))}
+        </ul>
+      )}
+      {posts.length === 0 && (
+        <div style={{ textAlign: "center", color: "white" }}>
+          <h2>There are no posts yet.</h2>
+          <p>Start adding some!</p>
+        </div>
+      )}
     </>
   );
 };
