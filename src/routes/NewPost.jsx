@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Modal from "../components/Modal";
 import classes from "./NewPost.module.css";
 
-function NewPost({ onCancel, onAddPost }) {
+function NewPost({ onAddPost }) {
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
 
@@ -21,7 +22,7 @@ function NewPost({ onCancel, onAddPost }) {
       body,
     };
     onAddPost(postData);
-    onCancel();
+    // onCancel();
   };
 
   return (
@@ -36,9 +37,9 @@ function NewPost({ onCancel, onAddPost }) {
           <textarea id="body" required rows={3} onChange={bodyChangeHandler} />
         </p>
         <p className={classes.actions}>
-          <button type="button" onClick={onCancel}>
+          <Link to=".." type="button">
             Cancel
-          </button>
+          </Link>
           <button>Submit</button>
         </p>
       </form>

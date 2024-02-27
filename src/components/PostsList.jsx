@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Post from "./Post";
 import classes from "./PostsList.module.css";
 
-const PostsList = ({ isPosting, onStopPosting }) => {
+const PostsList = () => {
   const [posts, setPosts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
