@@ -9,8 +9,15 @@ import classes from "./PostsList.module.css";
 const PostsList = ({ isPosting, onStopPosting }) => {
   const [posts, setPosts] = useState([]);
 
-  const addPostHandler = (PostData) => {
-    setPosts((existingPosts) => [PostData, ...existingPosts]);
+  const addPostHandler = (postData) => {
+    fetch("http://localhost:8080/posts", {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    setPosts((existingPosts) => [postData, ...existingPosts]);
   };
 
   return (

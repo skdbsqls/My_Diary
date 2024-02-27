@@ -15,11 +15,11 @@ function NewPost({ onCancel, onAddPost }) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const PostData = {
+    const postData = {
       name,
       body,
     };
-    onAddPost(PostData);
+    onAddPost(postData);
     onCancel();
   };
 
